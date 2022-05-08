@@ -18,7 +18,14 @@ const Usertable = (props) => {
               <td>{user.name}</td>
               <td>{user.username}</td>
               <td>
-                <button className='button muted-button'>Edit</button>
+                <button
+                  className='button muted-button'
+                  onClick={() => {
+                    props.setEditing(true);
+                  }}
+                >
+                  Edit
+                </button>
                 <button
                   className='button muted-button'
                   onClick={() => {
