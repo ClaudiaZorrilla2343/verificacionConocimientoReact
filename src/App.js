@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Usertable from './components/UserTable';
-
 import { v4 as uuidv4 } from 'uuid';
+import AddUserForm from './addUserForm';
 
 function App() {
   const usersData = [
@@ -12,18 +12,26 @@ function App() {
   //state
   const [users, setUsers] = useState(usersData);
 
-  <div className='container'>
-    <h1>CRUD App with Hooks</h1>
-    <div className='flex-row'>
-      <div className='flex-large'>
-        <h2>Add user</h2>
-      </div>
-      <div className='flex-large'>
-        <h2>View users</h2>
-        <Usertable users={users} />
+  //Add users
+  const addUser = (user) => {
+    user.id = uuidv4();
+    setUsers([...users, user]);
+  };
+  return (
+    <div className='container'>
+      <h1>CRUD App with Hooks</h1>
+      <div className='flex-row'>
+        <div className='flex-large'>
+          <h2>Add user</h2>
+          <AddUserForm />
+        </div>
+        <div className='flex-large'>
+          <h2>View users</h2>
+          <Usertable users={users} />
+        </div>
       </div>
     </div>
-  </div>;
+  );
 }
 
 export default App;
