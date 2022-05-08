@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Usertable from './components/UserTable';
+
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const usersData = [
+    { id: uuidv4(), name: 'Claudia', username: 'claudiaa2343' },
+    { id: uuidv4(), name: 'Valentina', username: 'vale8080' },
+    { id: uuidv4(), name: 'Pedro', username: 'antonio1012' },
+  ];
+  //state
+  const [users, setUsers] = useState(usersData);
+
+  <div className='container'>
+    <h1>CRUD App with Hooks</h1>
+    <div className='flex-row'>
+      <div className='flex-large'>
+        <h2>Add user</h2>
+      </div>
+      <div className='flex-large'>
+        <h2>View users</h2>
+        <Usertable users={users} />
+      </div>
     </div>
-  );
+  </div>;
 }
 
 export default App;
